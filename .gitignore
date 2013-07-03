@@ -1,4 +1,6 @@
+.idea/
 *.py[cod]
+config/override.py
 
 # C extensions
 *.so

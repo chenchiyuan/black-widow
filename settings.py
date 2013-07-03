@@ -1,4 +1,5 @@
 # Django settings for aaaa project.
+from config import config
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -124,6 +125,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'zhangbook',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,3 +156,6 @@ LOGGING = {
         },
     }
 }
+
+# SPIDER CONFIG
+SPIDER_BASE_DIR = config.get("spider", "base_dir")

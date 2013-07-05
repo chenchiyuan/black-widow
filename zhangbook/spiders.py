@@ -26,6 +26,7 @@ class ZhangBookSpider(BookSpiderInterface):
         u'r/>'
     ]
     def get_all_books(self, limit=10, *args, **kwargs):
+        limit = int(limit)
         books = OrderedDict()
         for page in range(1, limit+1):
             url = lambda  page:\
@@ -97,10 +98,11 @@ class ZhangBookSpider(BookSpiderInterface):
         }
         return book_info
 
-    def get_chapters(self, name, book_id="0", start=1, *args, **kwargs):
+    def get_chapters(self, book_id="0", start=1, *args, **kwargs):
         if not book_id:
             raise Exception
 
+        start = int(start)
         book_list_url_lmd = lambda book_id, page: "http://zhangbook.com/book/list.aspx?book=%s&pn=%d" %(book_id,page)
         url = book_list_url_lmd(book_id, page=1)
         content = helper.get(url, cache=False)
@@ -186,6 +188,7 @@ class ZhangBookSpider(BookSpiderInterface):
         return content
 
     def page_detail(self, book_id, number_id, page):
+        number_id = int(number_id)
         url = lambda book_id, page, chapter:\
         "http://zhangbook.com/book/read.aspx?book=%s&page=%s&chapter=%d" %(book_id, page, chapter)
 

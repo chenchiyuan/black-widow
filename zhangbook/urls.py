@@ -2,15 +2,11 @@
 # __author__ = chenchiyuan
 from __future__ import division, unicode_literals, print_function
 from django.conf.urls import patterns, include, url
+from views import get_all_books, get_book_detail, get_chapter_content, get_chapters
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'aaaa.views.home', name='home'),
-    # url(r'^aaaa/', include('aaaa.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'books/$', get_all_books, name="all_books"),
+    url(r'book/detail/$', get_book_detail, name="book_detail"),
+    url(r'chapters/$', get_chapters, name="chapters"),
+    url(r'chapter/detail/$', get_chapter_content, name="chapter")
 )
